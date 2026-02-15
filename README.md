@@ -1,1 +1,64 @@
-# Real-Time Task Collaboration Platform A lightweight Trello/Notion-style board with realtime sync, JWT auth, and drag-and-drop. ## Features - JWT authentication with protected routes - Boards, lists, tasks, and activity history - Realtime updates using Socket.IO rooms - Search and pagination for tasks - Drag and drop tasks between lists ## Tech Stack - Frontend: React (Vite), Tailwind, Axios, Socket.IO Client, dnd-kit - Backend: Node.js, Express, MongoDB, Mongoose, Socket.IO ## Project Structure ``` backend/server config/ controllers/ middleware/ models/ routes/ socket/ utils/ frontend/client src/ api/ components/ context/ hooks/ pages/ socket/ ``` ## Getting Started ### Backend ``` cd backend/server npm install cp .env.example .env npm run dev ``` ### Frontend ``` cd frontend/client npm install cp .env.example .env npm run dev ``` ## Seed Data ``` cd backend/server npm run seed ``` ## Demo Credentials - Email: demo@taskcollab.dev - Password: demo1234 ## API Documentation ### Auth - POST `/api/auth/register` - POST `/api/auth/login` ### Boards - GET `/api/boards` - GET `/api/boards/:id` - POST `/api/boards` - DELETE `/api/boards/:id` - PUT `/api/boards/:id/members` ### Lists - GET `/api/lists?boardId=...` - POST `/api/lists` ### Tasks - GET `/api/tasks?boardId=...&listId=...&search=...&page=1&limit=20` - POST `/api/tasks` - PUT `/api/tasks/:id` - DELETE `/api/tasks/:id` - PUT `/api/tasks/:id/move` ### Activities - GET `/api/activities?boardId=...&page=1&limit=20` ## Socket Events Client emits: - `join-board` (boardId) - `leave-board` (boardId) Server emits: - `task-created` - `task-updated` - `task-moved` - `task-deleted` - `list-created` - `activity-added` ## Architecture Notes - MVC pattern on the backend with JWT middleware and a central error handler. - Socket.IO server uses board-based rooms for realtime events. - Frontend uses Context for authentication and a central socket manager. - Drag and drop uses dnd-kit with list-level droppable containers. ## Environment Variables Backend (.env): - `PORT` - `MONGO_URI` - `JWT_SECRET` - `CLIENT_URL` Frontend (.env): - `VITE_API_URL` ## Testing ``` cd backend/server npm test ``` ## Deployment Notes - Use `npm run build` in `frontend/client` and serve the dist folder with your preferred static hosting. - Configure `CLIENT_URL` for CORS and production domains. # Task-Collab
+# Real-Time Task Collaboration Platform
+
+A lightweight Trello/Notion-style board with realtime sync, JWT auth, and drag-and-drop.
+
+## Features
+- JWT authentication with protected routes
+- Boards, lists, tasks, and activity history
+- Realtime updates using Socket.IO rooms
+- Search and pagination for tasks
+- Drag and drop tasks between lists
+
+## Tech Stack
+- **Frontend:** React (Vite), Tailwind, Axios, Socket.IO Client, dnd-kit
+- **Backend:** Node.js, Express, MongoDB, Mongoose, Socket.IO
+
+## Project Structure
+```
+backend/
+  server/
+  config/
+  controllers/
+  middleware/
+  models/
+  routes/
+  socket/
+  utils/
+frontend/
+  client/
+    src/
+      api/
+      components/
+      context/
+      hooks/
+      pages/
+      socket/
+```
+
+## Getting Started
+### Backend
+```bash
+dd backend/server 
+npm install 
+pc .env.example .env 
+npm run dev 
+```
+### Frontend
+```bash
+dd frontend/client 
+npm install 
+pc .env.example .env 
+npm run dev 
+```
+## Seed Data
+```bash
+dd backend/server 
+npm run seed 
+```
+## Demo Credentials
+- Email: demo@taskcollab.dev
+- Password: demo1234
+
+## API Documentation### Auth - POST /api/auth/register - POST /api/auth/login### Boards - GET /api/boards - GET /api/boards/:id - POST /api/boards - DELETE /api/boards/:id - PUT /api/boards/:id/members### Lists - GET /api/lists?boardId=... - POST /api/lists### Tasks - GET /api/tasks?boardId=...&listId=...&search=...&page=1&limit=20 - POST /api/tasks - PUT /api/tasks/:id - DELETE /api/tasks/:id - PUT /api/tasks/:id/move### Activities - GET /api/activities?boardId=...&page=1&limit=20## Socket EventsClient emits:- join-board (boardId)- leave-board (boardId)Server emits:- task-created- task-updated- task-moved- task-deleted- list-created- activity-added## Architecture Notes-	MVC pattern on the backend with JWT middleware and a central error handler.- Socket.IO server uses board-based rooms for realtime events.- Frontend uses Context for authentication and a central socket manager.- Drag and drop uses dnd-kit with list-level droppable containers.## Environment VariablesBackend (.env):-	PORT-	MONGO_URI-	JWT_SECRET-	CLIENT_URLFrontend (.env):-	VITE_API_URL## Testing```bash
+dd backend/server npm test```## Deployment Notes-	Use npm run build in frontend/client and serve the dist folder with your preferred static hosting.- Configure CLIENT_URL for CORS and production domains.
+# Task-Collab
