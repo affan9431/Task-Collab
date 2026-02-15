@@ -114,6 +114,6 @@ npm run seed
 | JWT_SECRET | Secret key for JWT |
 | CLIENT_URL | Frontend URL |
 
-**Frontend (`.env`):**
-vite URL: VITE_API_URL \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \"https://your-api-url.com\
+
+
 
